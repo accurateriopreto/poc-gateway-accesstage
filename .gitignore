@@ -1,4 +1,2 @@
-.README.md.swp
-.docker-compose.yml.swp
-.init-user-db.sh.swp
-.Dockerfile.swp
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
