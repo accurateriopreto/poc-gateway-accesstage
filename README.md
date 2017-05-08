@@ -18,5 +18,5 @@ instruções de instalações estão em:
 ### YALM dos Containers
 Os arquivos YALM de configuração dos container para o Kubernetes encontram-se em
 **/kubernetes**
-- kubernetes.yml
+- kubernetes.yml  
 Cria um **Deployment** e um **Service** para uma base Postgre
