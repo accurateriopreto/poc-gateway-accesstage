@@ -27,7 +27,7 @@ O docker compose subirá os seguintes container
 ## Postgres
 Container de banco de dados, configurações abaixo  
 * Senha: 123456
-* Porta: 5423
+* Porta: 5432
 * Banco de dados: gatewaydb
 * Usuário para conexão no banco de dados: gateway
 
