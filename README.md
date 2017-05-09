@@ -17,7 +17,7 @@ permite a chamada de um metodo POST que simula um pagamento e salva os dados
 referente a ele no banco.  
 
 Exemplo:
-- POST http://192.168.99.100:30808/gateway-core-service
+- POST http://192.168.99.100:30808/operations
 
 ```json
 {
@@ -37,6 +37,31 @@ exemplo de resposta:
 }
 ```  
 Os campos *orderStatus* e *authorizationCode* tem resposta randômica.  
+
+- GET http://192.168.99.100:30808/operations/{id}
+Faz a busca pelo pedido informado pelo campo *{id}*  
+Caso não encontre resultado retorno o codigo http 404 e um json como no exemplo
+abaixo:  
+```json
+{
+  "orderNumber": "123",
+  "orderTotal": null,
+  "orderStatus": "not_found",
+  "transactionDate": null,
+  "authorizationCode": null
+}
+```  
+
+Caso a busca retorne resultado, retorna o código 200 e o json de resposta  
+```json
+{
+  "orderNumber": "123",
+  "orderTotal": 100.1,
+  "orderStatus": "pago",
+  "transactionDate": 1494353901554,
+  "authorizationCode": "522162"
+}
+```
 
 Para execução do projeto no ambiente de desenvolvimento utilizando SpringBoot é
 possível passar o perfil **local**, isso fará com que a aplicação utilize um

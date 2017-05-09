@@ -2,9 +2,14 @@ package br.com.accesstage.model.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Calendar;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -20,8 +25,9 @@ public class Pedido implements Serializable {
     private BigDecimal valor;
     @Column
     private String status;
-    @Column
-    private String criadoEm;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at", insertable = true, updatable = false)
+    private Date criadoEm;
     @Column
     private String autorizacao;
 
@@ -49,11 +55,11 @@ public class Pedido implements Serializable {
         this.status = status;
     }
 
-    public String getCriadoEm() {
+    public Date getCriadoEm() {
         return criadoEm;
     }
 
-    public void setCriadoEm(String criadoEm) {
+    public void setCriadoEm(Date criadoEm) {
         this.criadoEm = criadoEm;
     }
 
@@ -64,6 +70,10 @@ public class Pedido implements Serializable {
     public void setAutorizacao(String autorizacao) {
         this.autorizacao = autorizacao;
     }
-    
+
+    @PrePersist
+    private void onCreate() {
+        setCriadoEm(Calendar.getInstance().getTime());
+    }
     
 }
