@@ -26,6 +26,6 @@ spec:
     spec:
       containers:
         - name: gateway-core-service
-          image: docker.io/accurateriopreto/gateway-core-service:0.0.2
+          image: docker.io/accurateriopreto/gateway-core-service:0.0.4
           ports:
             - containerPort: 8080
