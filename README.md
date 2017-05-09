@@ -38,6 +38,7 @@ exemplo de resposta:
 ```  
 Os campos *orderStatus* e *authorizationCode* tem resposta randômica.  
 
+
 - GET http://192.168.99.100:30808/operations/{id}  
 Faz a busca pelo pedido informado pelo campo *{id}*  
 Caso não encontre resultado retorno o codigo http 404 e um json como no exemplo
