@@ -12,8 +12,11 @@ import org.springframework.web.client.RestTemplate;
 
 import br.com.accesstage.gatway.client.service.transaction.vo.TransactionRequest;
 import br.com.accesstage.gatway.client.service.transaction.vo.TransactionResponse;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
+@RequestMapping("/transactions")
 public class TransactionRestController {
 	
 	private final Logger LOG = Logger.getLogger(TransactionRestController.class.getName());
@@ -21,7 +24,9 @@ public class TransactionRestController {
 	@Value("${gateway.endpoint.post}")
 	private String urlPostEndPoint;
 	
-	@RequestMapping(value="/transactions",method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST,
+                produces = MediaType.APPLICATION_JSON_VALUE,
+                consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<TransactionResponse> newTransaction(@RequestBody TransactionRequest request){
 		
 		LOG.info("INICIO TRANSACTION LOG");
@@ -31,4 +36,17 @@ public class TransactionRestController {
 		
 		return ResponseEntity.ok(transactionsResponse);
 	}
+        
+	@RequestMapping(value = "/{codigoPedido}",
+                method = RequestMethod.GET,
+                produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<TransactionResponse> getById(@PathVariable(value = "codigoPedido", required = true) String codigoPedido){
+		
+		LOG.info("INICIO GET LOG");
+		
+		RestTemplate restTemplate = new RestTemplate();
+                ResponseEntity<TransactionResponse> transactionsResponse = restTemplate.getForEntity(urlPostEndPoint+"/"+codigoPedido, TransactionResponse.class);
+		
+		return ResponseEntity.ok(transactionsResponse.getBody());
+	}        
 }
