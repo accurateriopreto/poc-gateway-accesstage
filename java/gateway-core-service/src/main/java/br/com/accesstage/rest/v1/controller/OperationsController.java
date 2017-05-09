@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author caio
  */
-@RestController("/opetations")
+@RestController()
 public class OperationsController {
     private static final String[] PAYMENT_STATUS = {"pago", "recusado"};
 
