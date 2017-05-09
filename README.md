@@ -74,6 +74,48 @@ chamada para ambiente local:
 mvn clean install spring-boot:run -Dspring.profiles.active=local
 ```
 
+## gateway-eureka
+Este é servidor responsável pelo ponto de registros dos clientes.
+Consumidores que posteriormente consumidores possam descobrir estes clientes.
+
+Para realizar o build do projeto execute o seguinte comando.
+```shell
+mvn clean package
+```
+
+Para subir o servidor execute o seguinte comando:
+```shell
+mvn spring-boot:run -Dspring.profiles.active=devLocal
+```
+Quando o servidor se encontrar online é possível visualizar as aplicação registradas como cliente na seguinte url
+
+- POST http://localhost:8761/
+
+## gateway-client-service
+Cliente responsável por acesso ao serviços da api de gateway. Este quando executado se auto registra no servidor gateway-eureka. 
+Quando um consumidor realizar uma requisição de discovery no servidor gateway-eureka é retornado um endereço,
+para que se possa realizar a requisição
+
+Para realizar o build do projeto execute o seguinte comando.
+```shell
+mvn clean package
+```
+
+Para subir o cliente execute o seguinte comando:
+
+```shell
+mvn spring-boot:run -Dspring.profiles.active=devLocal
+```
+Este subirá na porta padrão definida no application.yalm 7111, é possível subir mais de uma instância executando o comando acima,
+alterando a porta como no exemplo abaixo
+
+```shell
+mvn spring-boot:run -Dspring.profiles.active=devLocal -Dport=7222
+```
+Quando o servidor se encontrar online é possível visualizar as aplicação registradas como cliente na seguinte url
+
+- POST http://localhost:8761/
+
 
 # Instalação
 
