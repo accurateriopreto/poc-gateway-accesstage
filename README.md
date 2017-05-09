@@ -131,3 +131,7 @@ Os arquivos YALM de configuração dos container para o Kubernetes encontram-se 
 Cria um **Deployment** e um **Service** para uma base Postgre
 - gateway-core-service.yml  
 Cria **Deployment** e **Service** para api Rest.
+- eureka.yml
+Cria **Deployment** e **Service** do discovery service do eureka.
+- gateway-cliente-service.yml
+Cria **Deployment** e **Service** do client que se registra no eureka.
