@@ -26,6 +26,6 @@ spec:
     spec:
       containers:
         - name: eureka
-          image: docker.io/accurateriopreto/gateway-client-service:0.0.7
+          image: docker.io/accurateriopreto/gateway-client-service:0.0.8
           ports:
             - containerPort: 7111
