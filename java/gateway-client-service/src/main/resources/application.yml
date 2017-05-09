@@ -1,6 +1,8 @@
 spring:
   application:
     name: gateway-client-service
+  profiles:
+    active: prod    
 
 server:
   port: ${port}
@@ -21,4 +23,8 @@ port: 7111
 portEureka: 8761
 hostName: localhost
 url: http://${hostName}:${portEureka}/eureka/
-    
+---
+spring:
+    profiles: prod
+port: 7111
+url: http://eureka:8761/eureka/

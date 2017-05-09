@@ -24,6 +24,8 @@ eureka:
 spring:
   application:
     name: eureka-gateway-server
+  profiles:
+    active: prod
 
 error:
     whitelabel:
@@ -36,4 +38,10 @@ port: 8761
 hostName: localhost
 environment: local
 url: http://${hostName}:${port}/eureka/      
-      
+---
+spring:
+    profiles: prod
+port: 8761
+hostName: eureka
+environment: local
+url: http://${hostName}:${port}/eureka/      
