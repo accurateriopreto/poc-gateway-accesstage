@@ -26,7 +26,7 @@ Exemplo:
 }
 ```  
 
-pode vir como resposta  
+exemplo de resposta:  
 ```json
 {
   "orderNumber": "123",
@@ -37,6 +37,7 @@ pode vir como resposta
 }
 ```  
 Os campos *orderStatus* e *authorizationCode* tem resposta randômica.  
+
 Para execução do projeto no ambiente de desenvolvimento utilizando SpringBoot é
 possível passar o perfil **local**, isso fará com que a aplicação utilize um
 banco de dados embutido, ao invés de tentar se conectar ao postgres. Exemplo da
