@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: gateway-consumer
+    
+server:
+  port: ${port}
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: true
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: ${url}
+
+gateway-server:
+  ribbon:
+    #eureka:
+    #  enabled: true
+    DeploymentContextBasedVipAddresses: gateway-api-service
+   # listOfServers: localhost:7111,localhost:9999
+    NIWSServerListClassName: com.netflix.niws.loadbalancer.DiscoveryEnabledNIWSServerList
+    ServerListRefreshInterval: 10000
+   
+---
+spring:
+    profiles: devLocal
+port: 8002
+portEureka: 8761
+hostName: localhost
+url: http://${hostName}:${portEureka}/eureka/

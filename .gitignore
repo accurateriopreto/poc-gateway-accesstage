@@ -9,3 +9,7 @@
 [._]mvn
 
 **/target
+
+.classpath
+.project
+.settings/
