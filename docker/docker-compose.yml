@@ -1,9 +1,9 @@
 version: '2'
 services:
   postgres:
-    container_name: postgres-poc
+    container_name: gateway-postgres-poc
     build: ./postgres
-    image: postgres-image-poc
+    image: gateway-postgres-poc-image:1
     environment:
       - POSTGRES_PASSWORD=123456
     ports:
