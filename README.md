@@ -60,5 +60,5 @@ Os arquivos YALM de configuração dos container para o Kubernetes encontram-se 
 **/kubernetes**
 - postgres.yml  
 Cria um **Deployment** e um **Service** para uma base Postgre
-- gateway-core-service.yml
+- gateway-core-service.yml  
 Cria **Deployment** e **Service** para api Rest.
