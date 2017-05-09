@@ -1,0 +1,39 @@
+#Server Specifics
+server:
+  port: ${port}
+eureka:
+  environment: ${environment}
+  server:
+    eviction-interval-timer-in-ms: 2000
+  instance:
+    hostname: ${hostName}
+    statusPageUrlPath: ${management.contextPath}/info
+    healthCheckUrlPath: ${management.contextPath}/health
+    registryFetchIntervalSeconds: 1
+    leaseRenewalIntervalInSeconds: 2
+    leaseExpirationDurationInSeconds: 5
+  client:
+    initialInstanceInfoReplicationIntervalSeconds: 5
+    registerWithEureka: false
+    fetchRegistry: false
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: ${url}
+
+spring:
+  application:
+    name: eureka-gateway-server
+
+error:
+    whitelabel:
+      enabled: false
+  
+---
+spring:
+    profiles: devLocal
+port: 8761
+hostName: localhost
+environment: local
+url: http://${hostName}:${port}/eureka/      
+      
