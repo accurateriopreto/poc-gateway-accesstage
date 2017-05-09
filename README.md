@@ -69,7 +69,7 @@ banco de dados embutido, ao invés de tentar se conectar ao postgres. Exemplo da
 chamada para ambiente local:  
 
 ```shell
-mci spring-boot:run -Dspring.profiles.active=local
+mvn clean install spring-boot:run -Dspring.profiles.active=local
 ```
 
 
