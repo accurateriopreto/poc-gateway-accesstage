@@ -19,10 +19,13 @@ import org.springframework.web.client.RestTemplate;
 import br.com.accesstage.gateway.consumer.configuration.Configuration;
 import br.com.accesstage.gateway.consumer.vo.ConsumerTransactionRequest;
 import br.com.accesstage.gateway.consumer.vo.ConsumerTransactionResponse;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RibbonClient(name="gateway-client-service",configuration=Configuration.class)
 @EnableDiscoveryClient
+@RequestMapping("/transactions")
 public class GatewayController  {
 	
 	private static final Logger LOG = Logger.getLogger(GatewayController.class.getName());
@@ -39,14 +42,28 @@ public class GatewayController  {
 	@Autowired
 	 RestTemplate restTemplate;
 	
-	@RequestMapping(value="/transactions",method=RequestMethod.POST)
+	@RequestMapping(method=RequestMethod.POST,
+                produces = MediaType.APPLICATION_JSON_VALUE,
+                consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> transactions(@RequestBody ConsumerTransactionRequest consumerTransactionRequest) {
 		
 		LOG.info("NOVA TRANSACAO CONSUMER");
 		
-		consumerTransactionRequest.setOrderNumber(UUID.randomUUID().toString());
 		String urlConcatenada = url.concat("transactions");
 		ConsumerTransactionResponse consumerTransactionResponse =restTemplate.postForObject(urlConcatenada, consumerTransactionRequest, ConsumerTransactionResponse.class);
 		return ResponseEntity.ok(consumerTransactionResponse);
 	}
+        
+	@RequestMapping(value = "/{codigoPedido}",
+                method = RequestMethod.GET,
+                produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getById(@PathVariable(value = "codigoPedido", required = true) String codigoPedido){
+		
+		LOG.info("INICIO GET LOG");
+		
+                String urlConcatenada = url.concat("transactions");
+                ResponseEntity<?> transactionsResponse = restTemplate.getForEntity(urlConcatenada+"/"+codigoPedido, ConsumerTransactionResponse.class);
+		
+		return ResponseEntity.ok(transactionsResponse.getBody());
+	}         
 }
