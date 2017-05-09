@@ -9,7 +9,9 @@ import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.PingUrl;
 import com.netflix.loadbalancer.WeightedResponseTimeRule;
 
-public class RibbonConfiguration {
+import br.com.accesstage.gateway.consumer.filter.SimpleFilter;
+
+public class Configuration {
 	@Autowired
 	IClientConfig ribbonClientConfig;
 
@@ -22,4 +24,9 @@ public class RibbonConfiguration {
 	public IRule ribbonRule(IClientConfig config) {
 		return new WeightedResponseTimeRule();
 	}
+	
+	 @Bean
+	  public SimpleFilter simpleFilter() {
+	    return new SimpleFilter();
+	  }
 }

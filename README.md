@@ -112,10 +112,30 @@ alterando a porta como no exemplo abaixo
 ```shell
 mvn spring-boot:run -Dspring.profiles.active=devLocal -Dport=7222
 ```
-Quando o servidor se encontrar online é possível visualizar as aplicação registradas como cliente na seguinte url
+Neste ponto é possível testar o cliente, realize um post para 
 
-- POST http://localhost:8761/
+- POST http://localhost:7222/transactions
 
+```json
+{
+   "orderNumber": "123",
+   "orderTotal": 100.10
+}
+```  
+
+exemplo de resposta:  
+```json
+{
+  "orderNumber": "123",
+  "orderTotal": 100.1,
+  "orderStatus": "pago",
+  "transactionDate": 1494339174898,
+  "authorizationCode": "783854"
+}
+```  
+## gateway-consumer
+Este projeto fica responsável por consumir os clientes registrados no servidor **gateway-eureka**. Este consumer se utiliza
+do ribbon para realizar o load-balance do clientes expostos pelo **gateway-eureka** e também do zuul para realizar 
 
 # Instalação
 

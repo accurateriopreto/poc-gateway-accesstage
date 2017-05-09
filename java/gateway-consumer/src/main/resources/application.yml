@@ -14,11 +14,16 @@ eureka:
     serviceUrl:
       defaultZone: ${url}
 
+zuul:
+  routes:
+      api:
+        url: http://${hostName}:${port}
+
 gateway-server:
   ribbon:
     #eureka:
     #  enabled: true
-    DeploymentContextBasedVipAddresses: gateway-api-service
+    DeploymentContextBasedVipAddresses: gateway-client-service
    # listOfServers: localhost:7111,localhost:9999
     NIWSServerListClassName: com.netflix.niws.loadbalancer.DiscoveryEnabledNIWSServerList
     ServerListRefreshInterval: 10000

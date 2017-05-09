@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import br.com.accesstage.gateway.consumer.configuration.RibbonConfiguration;
+import br.com.accesstage.gateway.consumer.configuration.Configuration;
 import br.com.accesstage.gateway.consumer.vo.ConsumerTransactionRequest;
 import br.com.accesstage.gateway.consumer.vo.ConsumerTransactionResponse;
 
 @RestController
-@RibbonClient(name="gateway-api-service",configuration=RibbonConfiguration.class)
+@RibbonClient(name="gateway-client-service",configuration=Configuration.class)
 @EnableDiscoveryClient
 public class GatewayController  {
 	
