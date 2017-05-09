@@ -72,6 +72,25 @@ chamada para ambiente local:
 mci spring-boot:run -Dspring.profiles.active=local
 ```
 
+## gateway-eureka
+Este é servidor responsável pelo ponto de registros dos clientes.
+Consumidores que posteriormente consumidores possam descobrir estes clientes.
+
+Para realizar o build do projeto execute o seguinte comando.
+```shell
+mvn clean package
+```
+
+Para subir o servidor execute o seguinte comando:
+```shell
+mvn spring-boot:run -Dspring.profiles.active=devLocal
+```
+Quando o servidor se encontrar online é possível visualizar as aplicação registradas como cliente na seguinte url
+
+- POST http://localhost:8761/
+
+
+
 
 # Instalação
 
