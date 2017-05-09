@@ -1,2 +1,11 @@
+# .swp files
 [._]*.s[a-w][a-z]
 [._]s[a-w][a-z]
+
+# .jar files
+*jar
+
+# .mvn
+[._]mvn
+
+**/target
