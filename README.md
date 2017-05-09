@@ -18,12 +18,14 @@ referente a ele no banco.
 
 Exemplo:
 - POST http://192.168.99.100:30808/gateway-core-service
+
 ```json
 {
    "orderNumber": "123",
    "orderTotal": 100.10
 }
 ```  
+
 pode vir como resposta  
 ```json
 {
