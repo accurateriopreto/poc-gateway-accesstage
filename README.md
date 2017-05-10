@@ -152,7 +152,10 @@ exemplo de resposta:
 ```  
 ## gateway-consumer
 Este projeto fica responsável por consumir os clientes registrados no servidor **gateway-eureka**. Este consumer se utiliza
-do ribbon para realizar o load-balance do clientes expostos pelo **gateway-eureka** e também do zuul para realizar 
+do ribbon para realizar o load-balance do clientes expostos pelo **gateway-eureka** e também do zuul para realizar router.
+
+Exemplo de como executar no postman segue mais abaixo no item **Testando a aplicação**
+
 
 # Instalação
 
