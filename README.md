@@ -155,3 +155,5 @@ Cria **Deployment** e **Service** para api Rest.
 Cria **Deployment** e **Service** do discovery service do eureka.
 - gateway-cliente-service.yml  
 Cria **Deployment** e **Service** do client que se registra no eureka.
+- gateway-consumer.yml
+Cria **Deployment** e **Service** do consumer
