@@ -3,10 +3,14 @@ Este projeto é uma prova de conceito para o desenvolvimento do novo gateway de
 pagamentos
 
 # Tecnologias
+As principais tecnologias utilizadas para a PoC foram:  
 
-## Kubernetes
-O Kubernetes foi utilizado para facilitar o processo de deploy dos containers da
-poc.
+* Postgres
+* Kubernetes
+* Spring Boot
+* Spring Netflix Zuul
+* Spring Netflix Eureka
+* Spring Netflix Ribbon
 
 # Projetos
 As aplicações java encontram-se dentro da subpasta **/java/**  
