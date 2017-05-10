@@ -1,0 +1,48 @@
+{
+	"variables": [],
+	"info": {
+		"name": "poc - gateway",
+		"_postman_id": "428805bf-4b67-6bef-c9de-a5383801cb22",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api-post",
+			"request": {
+				"url": "http://192.168.99.100:30802/api/transactions\n",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"orderNumber\": \"456\",\n  \"orderTotal\": 100.1\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "apt-get",
+			"request": {
+				"url": "http://192.168.99.100:30802/api/transactions/456\n",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

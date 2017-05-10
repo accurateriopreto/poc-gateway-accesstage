@@ -11,6 +11,16 @@ poc.
 # Projetos
 As aplicações java encontram-se dentro da subpasta **/java/**  
 
+## postgres
+O banco de dados utilizado no projeto foi o postgres, ele foi disponibilizado no
+kubernetes e pode ser acessado externamente a partir das configurações abaixo:  
+
+* hostname: endereço ip do service do kubernetes do ambiente implantado.
+* port: 32574
+* database: gatewaydb
+* username: gateway
+* password: 123456
+
 ## gateway-spring-core
 Projeto que disponibiliza uma api rest integrada com o banco postgres. Essa api
 permite a chamada de um metodo POST que simula um pagamento e salva os dados
@@ -73,6 +83,9 @@ chamada para ambiente local:
 ```shell
 mvn clean install spring-boot:run -Dspring.profiles.active=local
 ```
+
+**OBS: os endereços IPs precisam ser obtidos do kubernetes no qual a POC foi
+implantada**
 
 ## gateway-eureka
 Este é servidor responsável pelo ponto de registros dos clientes.
@@ -157,3 +170,18 @@ Cria **Deployment** e **Service** do discovery service do eureka.
 Cria **Deployment** e **Service** do client que se registra no eureka.
 - gateway-consumer.yml
 Cria **Deployment** e **Service** do consumer
+
+# Testando a aplicação
+O aplicativo pode ser testado utilizando qualquer ferramenta capaz de consumir
+uma api rest (Soapui, Postman...)  
+
+Disponibilizamos um projeto de exemplo do postman dentro da pasta */postman* com
+o request necessários para criar e consultar um Pedido através da api rest. Este
+exemplo pode ser importado para dentro da ferramente para ser utilizado.  
+
+*OBS: os endereços de IP devem ser ajustados para o kubernetes onde o projeto
+gateway-consumer foi importando*  
+
+### Operações disponíveis
+   * POST - salva os dados de um pedido na base de dados
+   * GET - faz a consulta pelo OrderNumber informado do método POST
